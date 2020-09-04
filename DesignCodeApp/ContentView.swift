@@ -9,45 +9,55 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var isShown: Bool = false
+    
     var body: some View {
         
         ZStack {
             TitleView()
-                .blur(radius: 20)
+                .blur(radius: isShown ? 20 : 0)
+                .animation(.default)
             
             BackgroundCardView()
-                .background(Color("card4"))
+                .background(isShown ? Color("card3"): Color("card4"))
                 .cornerRadius(20)
                 .shadow(radius: 20)
-                .offset(x: 0, y: -40)
+                .offset(x: 0, y: isShown ? -400 : -40)
                 .scaleEffect(0.9)
-                .rotationEffect(.init(degrees: 10))
+                .rotationEffect(.init(degrees: isShown ? 0 : 10))
                 .rotation3DEffect(
                     .degrees(5),
                      axis: (x: 10.0, y: 0.0, z: 0.0),
                      anchor: .center
                     )
                 .blendMode(.hardLight)
+                .animation(.easeInOut(duration: 0.5))
             
             BackgroundCardView()
-                .background(Color("card3"))
+                .background(isShown ? Color("card4"): Color("card3"))
                 .cornerRadius(20)
                 .shadow(radius: 20)
-                .offset(x: 0, y: -20)
+                .offset(x: 0, y: isShown ? -200 : -20)
                 .scaleEffect(0.95)
-                .rotationEffect(.init(degrees: 5))
+                .rotationEffect(.init(degrees: isShown ? 0 : 5))
                 .rotation3DEffect(
                     .degrees(5),
                      axis: (x: 10.0, y: 0.0, z: 0.0),
                      anchor: .center
                     )
                 .blendMode(.hardLight)
+                .animation(.easeInOut(duration: 0.3))
             
             
-            CardView().blendMode(.hardLight)
+            CardView()
+                .blendMode(.hardLight)
+                .onTapGesture(perform: {
+                    self.isShown.toggle()
+                })
             
             BottomCardView()
-                .blur(radius: 20)
+                .blur(radius: isShown ? 20 : 0)
+                .animation(.default)
             
         }
         
