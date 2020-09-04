@@ -18,6 +18,12 @@ struct ContentView: View {
     
     @State var showBottomCard: Bool = false
     
+    @State var bottomCardSize: CGSize = .zero
+    
+    @State var showFullBottomCard: Bool = false
+    
+    private let bottomCardMinHeight: CGFloat = 50
+    
     var body: some View {
         
         ZStack {
@@ -80,23 +86,52 @@ struct ContentView: View {
                 .animation(.spring(response: 0.3, dampingFraction: 0.5, blendDuration:  0))
                 .blendMode(.hardLight)
                 .onTapGesture(perform: {
-                    self.showBottomCard.toggle()
+                    showBottomCard.toggle()
                 })
                 .gesture(
                     DragGesture().onChanged({ (value) in
-                        self.viewSize = value.translation
-                        self.isShown = true
+                        viewSize = value.translation
+                        isShown = true
                     }).onEnded({ (value) in
-                        self.viewSize = .zero
-                        self.isShown = false
+                        viewSize = .zero
+                        isShown = false
                     })
                 )
             
             BottomCardView()
                 .offset(x: 0, y: showBottomCard ? 310 : 1000)
+                .offset(y: bottomCardSize.height)
                 .animation(.timingCurve(0.2, 0.8, 0.2 , 1, duration: 0.8))
                 .blur(radius: isShown ? 20 : 0)
                 .animation(.default)
+                .gesture(
+                    DragGesture().onChanged({ (value) in
+                        bottomCardSize = value.translation
+                        
+                        if showFullBottomCard {
+                            bottomCardSize.height += -300
+                        }
+                        
+                        if bottomCardSize.height < -300 {
+                            bottomCardSize.height = -300
+                        }
+                        
+                    }).onEnded({ (_) in
+                        
+                        showBottomCard = (bottomCardSize.height > bottomCardMinHeight) ? false : true
+                        
+                        if bottomCardSize.height < -100 {
+                            bottomCardSize.height = -300
+                            showFullBottomCard = true
+                        } else {
+                            bottomCardSize = .zero
+                            showFullBottomCard = false
+                        }
+                        
+                    })
+                ).onTapGesture(count: 1, perform: {
+                    showBottomCard = false
+                })
             
         }
         
