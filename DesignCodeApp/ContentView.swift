@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     
+    //MARK:- Animation Toggle
     @State var isShown: Bool = false
+    
+    // MARK:- View State, which has an initial size of x:0, y:0
+    
+    @State var viewSize: CGSize = .zero
     
     var body: some View {
         
@@ -23,6 +28,7 @@ struct ContentView: View {
                 .cornerRadius(20)
                 .shadow(radius: 20)
                 .offset(x: 0, y: isShown ? -400 : -40)
+                .offset(x: viewSize.width, y: viewSize.height)
                 .scaleEffect(0.9)
                 .rotationEffect(.init(degrees: isShown ? 0 : 10))
                 .rotation3DEffect(
@@ -38,6 +44,7 @@ struct ContentView: View {
                 .cornerRadius(20)
                 .shadow(radius: 20)
                 .offset(x: 0, y: isShown ? -200 : -20)
+                .offset(x: viewSize.width, y: viewSize.height)
                 .scaleEffect(0.95)
                 .rotationEffect(.init(degrees: isShown ? 0 : 5))
                 .rotation3DEffect(
@@ -50,10 +57,21 @@ struct ContentView: View {
             
             
             CardView()
+                .offset(x: viewSize.width, y: viewSize.height)
+                .animation(.spring(response: 0.3, dampingFraction: 0.5, blendDuration:  0))
                 .blendMode(.hardLight)
                 .onTapGesture(perform: {
                     self.isShown.toggle()
                 })
+                .gesture(
+                    DragGesture().onChanged({ (value) in
+                        self.viewSize = value.translation
+                        self.isShown = true
+                    }).onEnded({ (value) in
+                        self.viewSize = .zero
+                        self.isShown = false
+                    })
+                )
             
             BottomCardView()
                 .blur(radius: isShown ? 20 : 0)
