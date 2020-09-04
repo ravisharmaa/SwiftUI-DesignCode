@@ -17,7 +17,7 @@ struct BackgroundCardView: View {
         VStack {
             Spacer()
         }
-        .frame(width: 340, height: 220)
+//        .frame(width: 340, height: 220)
     }
 }
 
