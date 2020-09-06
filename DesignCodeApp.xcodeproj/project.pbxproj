@@ -17,6 +17,8 @@
 		5173C10A25023B960077ECC6 /* BackgroundCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5173C10925023B960077ECC6 /* BackgroundCardView.swift */; };
 		5173C10D250259C40077ECC6 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5173C10C250259C40077ECC6 /* TitleView.swift */; };
 		5173C10F25025DA20077ECC6 /* BottomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5173C10E25025DA20077ECC6 /* BottomCardView.swift */; };
+		51C97F742502A8C100254E95 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C97F732502A8C100254E95 /* MenuView.swift */; };
+		51C97F76250346E400254E95 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C97F75250346E400254E95 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		5173C10925023B960077ECC6 /* BackgroundCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCardView.swift; sourceTree = "<group>"; };
 		5173C10C250259C40077ECC6 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		5173C10E25025DA20077ECC6 /* BottomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardView.swift; sourceTree = "<group>"; };
+		51C97F732502A8C100254E95 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		51C97F75250346E400254E95 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				51270D1C25021D2A007C70AE /* LaunchScreen.storyboard */,
 				51270D1F25021D2A007C70AE /* Info.plist */,
 				51270D1925021D2A007C70AE /* Preview Content */,
+				51C97F732502A8C100254E95 /* MenuView.swift */,
+				51C97F75250346E400254E95 /* HomeView.swift */,
 			);
 			path = DesignCodeApp;
 			sourceTree = "<group>";
@@ -165,7 +171,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51C97F76250346E400254E95 /* HomeView.swift in Sources */,
 				51270D1225021D2A007C70AE /* AppDelegate.swift in Sources */,
+				51C97F742502A8C100254E95 /* MenuView.swift in Sources */,
 				5173C10F25025DA20077ECC6 /* BottomCardView.swift in Sources */,
 				51270D1425021D2A007C70AE /* SceneDelegate.swift in Sources */,
 				5173C10725023AB90077ECC6 /* CardView.swift in Sources */,
